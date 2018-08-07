@@ -1,0 +1,18 @@
+ffmpeg -i s.avi s.mp4 --> convert avi to mp4
+ffmpeg -i s.mp4 -q 23 q.avi--> Change the quality of the video lower the number better the quality 23 being the default only work if we write in .avi files
+ffmpeg -i s.avi -crf 23 q.mp4--> for changing video quality while writing into mp4 files.
+ffmpeg -i s.mp3 -b:a 320k  q.mp4 --> for changing bitrate of audio
+ffmpeg -i s.mp3 -b:v 1000k  q.mp4 --> for changing bitrate of video
+ffmpeg -i s.mp3 -b:a 320k -b:v 1000k  q.mp4 --> for changing bitrate of audio and video
+Volume tweak
+ffmpeg -i input.wav -filter:a "volume=2" output.mp3 --> filter: a specify target is on audio
+Channel remapping
+ffmpeg -i input.wav -filter:a "channelmap=0-0|0-1" output.mp3 
+Cropping
+ffmpeg -i input -filter:v "crop=w=640:h=480:x=100:y=200" output.mp3 --> filter: v specify target is on video
+Scaling
+ffmpeg -i input -filter:v "scale=w=640:h=480" output
+proportion scaling
+ffmpeg -i input -filter:v "scale=w=640:h=-1" output 
+Rotation
+ffmpeg -i input -filter:v "rotate=45*PI/180" output 
