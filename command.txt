@@ -15,4 +15,27 @@ ffmpeg -i input -filter:v "scale=w=640:h=480" output
 proportion scaling
 ffmpeg -i input -filter:v "scale=w=640:h=-1" output 
 Rotation
-ffmpeg -i input -filter:v "rotate=45*PI/180" output 
+ffmpeg -i input -filter:v "rotate=45*PI/180" output
+
+Filter approach
+-vf"
+	filter1=
+		setting1=value1:	--> multiple setting is seperated by colon
+		setting2=value2,	--> multiple filter is seperated by comma
+	filter2=
+		setting1=value1:
+		setting2=value2;
+   "
+
+sharpenning --> Make blury video clear
+ffmpeg -i input.jpg -filter "unsharp" output.jpg
+ffmpeg -i input.jpg -filter "unsharp=lx=l3:ly=13" output.jpg --> By default its set to 3
+ffmpeg -i input.jpg -filter "unsharp=lx=13:ly=13:la=1.0" output.jpg --> If la is set to negative it blur the image
+
+Brightness contrast and color --> can be used for image and video
+ffmpeg -i input.jpg -filter "eq=..." output.jpg 
+ffmpeg -i input.avi -filter "eq=contrast=1.0" output.avi --> contrast 1.0 means no change reducing/increasing will reduce or increase contrast respectively
+ffmpeg -i input.avi -filter "eq=contrast=1.0:brightness=1.0" output.avi --> brightness 1.0 means no change reducing/increasing will darker or increase brightness respectively
+ffmpeg -i input.avi -filter "eq=contrast=1.0:brightness=1.0:saturation=1.0" output.avi --> saturation 1.0 means no change reducing/increasing will make more vivid or make color close to monochrome
+ffmpeg -i input.avi -filter "eq=contrast=1.0:brightness=1.0:saturation=1.0:gamma_r=1.0" --> reducing it will reduce amount of red
+
