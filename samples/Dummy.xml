@@ -1,0 +1,8 @@
+<test>
+	<a a_atri="test_a_atrri">
+		<b b_atr="test_b_atrri">
+			b_text
+		</b>
+		a_text
+	</a>
+</test>
