@@ -39,3 +39,5 @@ ffmpeg -i input.avi -filter "eq=contrast=1.0:brightness=1.0" output.avi --> brig
 ffmpeg -i input.avi -filter "eq=contrast=1.0:brightness=1.0:saturation=1.0" output.avi --> saturation 1.0 means no change reducing/increasing will make more vivid or make color close to monochrome
 ffmpeg -i input.avi -filter "eq=contrast=1.0:brightness=1.0:saturation=1.0:gamma_r=1.0" --> reducing it will reduce amount of red
 
+audio trimming fading threshold ratio and attack
+ffmpeg -ss 00  -i kick.aif  -t 12 -af "afade=t=out:st=11.2:d=1,acompressor=threshold=0.1:ratio=2:attack=5" kick.ogg
